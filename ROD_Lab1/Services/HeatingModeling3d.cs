@@ -46,6 +46,9 @@ namespace ROD_Lab1.Services
         public double tau = 0.01;
         public double a = 0.03;
 
+        public double initTime = 0;
+        public double maxTime;
+
         // Условие устойчивости
         public bool isStable => (tau * a * a) / (h * h) < 0.125;
 
