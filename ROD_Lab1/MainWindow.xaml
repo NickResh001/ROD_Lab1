@@ -23,21 +23,27 @@
                         <TextBlock FontFamily="Arial" FontSize="20"
                                    Text="A"
                                    HorizontalAlignment="Left" Margin="0,10" Width="40"/>
+                        
                         <TextBlock FontFamily="Arial" FontSize="20"
                                    Text=":"
                                    HorizontalAlignment="Left" Margin="0,10"/>
+                        
                         <TextBox    Margin="3,10" Width="60"
-                                    Text="{Binding TestString, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
-                                    />
-                        <TextBlock FontFamily="Arial" FontSize="20"
-                                   Text="i+"
-                                   HorizontalAlignment="Left" Margin="0,10"/>
-                        <TextBox Margin="3,10" Width="60"/>
-                        <TextBlock FontFamily="Arial" FontSize="20"
-                                   Text="j+"
-                                   HorizontalAlignment="Left" Margin="0,10"/>
-                        <TextBox Margin="3,10" Width="60"
-                                 Text=""/>
+                                    Text="{Binding A_i_weight, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
+                        
+                        <TextBlock  FontFamily="Arial" FontSize="20"
+                                    Text="i+"
+                                    HorizontalAlignment="Left" Margin="0,10"/>
+                        
+                        <TextBox    Margin="3,10" Width="60"
+                                    Text="{Binding A_j_weight, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
+                        
+                        <TextBlock  FontFamily="Arial" FontSize="20"
+                                    Text="j+"
+                                    HorizontalAlignment="Left" Margin="0,10"/>
+                        
+                        <TextBox    Margin="3,10" Width="60"
+                                    Text="{Binding A_free_weight, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
                     </StackPanel>
                 </Border>
                 <Border BorderBrush="DarkCyan" BorderThickness="1" Padding="5,0" Margin="0,5">
@@ -45,37 +51,56 @@
                         <TextBlock FontFamily="Arial" FontSize="20"
                                    Text="AA"
                                    HorizontalAlignment="Left" Margin="0,10" Width="40"/>
+
                         <TextBlock FontFamily="Arial" FontSize="20"
                                    Text=":"
                                    HorizontalAlignment="Left" Margin="0,10"/>
-                        <TextBox Margin="3,10" Width="60"/>
-                        <TextBlock FontFamily="Arial" FontSize="20"
-                                   Text="i+"
-                                   HorizontalAlignment="Left" Margin="0,10"/>
-                        <TextBox Margin="3,10" Width="60"/>
-                        <TextBlock FontFamily="Arial" FontSize="20"
-                                   Text="j+"
-                                   HorizontalAlignment="Left" Margin="0,10"/>
-                        <TextBox Margin="3,10" Width="60"/>
+
+                        <TextBox    Margin="3,10" Width="60"
+                                    Text="{Binding AA_i_weight, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
+
+                        <TextBlock  FontFamily="Arial" FontSize="20"
+                                    Text="i+"
+                                    HorizontalAlignment="Left" Margin="0,10"/>
+
+                        <TextBox    Margin="3,10" Width="60"
+                                    Text="{Binding AA_j_weight, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
+
+                        <TextBlock  FontFamily="Arial" FontSize="20"
+                                    Text="j+"
+                                    HorizontalAlignment="Left" Margin="0,10"/>
+
+                        <TextBox    Margin="3,10" Width="60"
+                                    Text="{Binding AA_free_weight, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
                     </StackPanel>
                 </Border>
+
                 <Border BorderBrush="DarkCyan" BorderThickness="1" Padding="5,0" Margin="0,5">
                     <StackPanel Orientation="Horizontal">
                         <TextBlock FontFamily="Arial" FontSize="20"
                                    Text="B"
                                    HorizontalAlignment="Left" Margin="0,10" Width="40"/>
+
                         <TextBlock FontFamily="Arial" FontSize="20"
                                    Text=":"
                                    HorizontalAlignment="Left" Margin="0,10"/>
-                        <TextBox Margin="3,10" Width="60"/>
-                        <TextBlock FontFamily="Arial" FontSize="20"
-                                   Text="j+"
-                                   HorizontalAlignment="Left" Margin="0,10"/>
-                        <TextBox Margin="3,10" Width="60"/>
-                        <TextBlock FontFamily="Arial" FontSize="20"
-                                   Text="k+"
-                                   HorizontalAlignment="Left" Margin="0,10"/>
-                        <TextBox Margin="3,10" Width="60"/>
+
+                        <TextBox    Margin="3,10" Width="60"
+                                    Text="{Binding B_k_weight, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
+
+                        <TextBlock  FontFamily="Arial" FontSize="20"
+                                    Text="k+"
+                                    HorizontalAlignment="Left" Margin="0,10"/>
+
+                        <TextBox    Margin="3,10" Width="60"
+                                    Text="{Binding B_j_weight, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
+
+                        <TextBlock  FontFamily="Arial" FontSize="20"
+                                    Text="j+"
+                                    HorizontalAlignment="Left" Margin="0,10"/>
+
+                        <TextBox    Margin="3,10" Width="60"
+                                    Text="{Binding B_free_weight, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
                     </StackPanel>
                 </Border>
                 <Border BorderBrush="DarkCyan" BorderThickness="1" Padding="5,0" Margin="0,5">
@@ -83,37 +108,56 @@
                         <TextBlock FontFamily="Arial" FontSize="20"
                                    Text="BB"
                                    HorizontalAlignment="Left" Margin="0,10" Width="40"/>
+
                         <TextBlock FontFamily="Arial" FontSize="20"
                                    Text=":"
                                    HorizontalAlignment="Left" Margin="0,10"/>
-                        <TextBox Margin="3,10" Width="60"/>
-                        <TextBlock FontFamily="Arial" FontSize="20"
-                                   Text="j+"
-                                   HorizontalAlignment="Left" Margin="0,10"/>
-                        <TextBox Margin="3,10" Width="60"/>
-                        <TextBlock FontFamily="Arial" FontSize="20"
-                                   Text="k+"
-                                   HorizontalAlignment="Left" Margin="0,10"/>
-                        <TextBox Margin="3,10" Width="60"/>
+
+                        <TextBox    Margin="3,10" Width="60"
+                                    Text="{Binding BB_k_weight, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
+
+                        <TextBlock  FontFamily="Arial" FontSize="20"
+                                    Text="k+"
+                                    HorizontalAlignment="Left" Margin="0,10"/>
+
+                        <TextBox    Margin="3,10" Width="60"
+                                    Text="{Binding BB_j_weight, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
+
+                        <TextBlock  FontFamily="Arial" FontSize="20"
+                                    Text="j+"
+                                    HorizontalAlignment="Left" Margin="0,10"/>
+
+                        <TextBox    Margin="3,10" Width="60"
+                                    Text="{Binding BB_free_weight, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
                     </StackPanel>
                 </Border>
+
                 <Border BorderBrush="DarkCyan" BorderThickness="1" Padding="5,0" Margin="0,5">
                     <StackPanel Orientation="Horizontal">
                         <TextBlock FontFamily="Arial" FontSize="20"
                                    Text="C"
                                    HorizontalAlignment="Left" Margin="0,10" Width="40"/>
+
                         <TextBlock FontFamily="Arial" FontSize="20"
                                    Text=":"
                                    HorizontalAlignment="Left" Margin="0,10"/>
-                        <TextBox Margin="3,10" Width="60"/>
-                        <TextBlock FontFamily="Arial" FontSize="20"
-                                   Text="i+"
-                                   HorizontalAlignment="Left" Margin="0,10"/>
-                        <TextBox Margin="3,10" Width="60"/>
-                        <TextBlock FontFamily="Arial" FontSize="20"
-                                   Text="k+"
-                                   HorizontalAlignment="Left" Margin="0,10"/>
-                        <TextBox Margin="3,10" Width="60"/>
+
+                        <TextBox    Margin="3,10" Width="60"
+                                    Text="{Binding C_i_weight, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
+
+                        <TextBlock  FontFamily="Arial" FontSize="20"
+                                    Text="i+"
+                                    HorizontalAlignment="Left" Margin="0,10"/>
+
+                        <TextBox    Margin="3,10" Width="60"
+                                    Text="{Binding C_k_weight, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
+
+                        <TextBlock  FontFamily="Arial" FontSize="20"
+                                    Text="k+"
+                                    HorizontalAlignment="Left" Margin="0,10"/>
+
+                        <TextBox    Margin="3,10" Width="60"
+                                    Text="{Binding C_free_weight, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
                     </StackPanel>
                 </Border>
                 <Border BorderBrush="DarkCyan" BorderThickness="1" Padding="5,0" Margin="0,5">
@@ -121,18 +165,27 @@
                         <TextBlock FontFamily="Arial" FontSize="20"
                                    Text="CC"
                                    HorizontalAlignment="Left" Margin="0,10" Width="40"/>
+
                         <TextBlock FontFamily="Arial" FontSize="20"
                                    Text=":"
                                    HorizontalAlignment="Left" Margin="0,10"/>
-                        <TextBox Margin="3,10" Width="60"/>
-                        <TextBlock FontFamily="Arial" FontSize="20"
-                                   Text="i+"
-                                   HorizontalAlignment="Left" Margin="0,10"/>
-                        <TextBox Margin="3,10" Width="60"/>
-                        <TextBlock FontFamily="Arial" FontSize="20"
-                                   Text="k+"
-                                   HorizontalAlignment="Left" Margin="0,10"/>
-                        <TextBox Margin="3,10" Width="60"/>
+
+                        <TextBox    Margin="3,10" Width="60"
+                                    Text="{Binding CC_i_weight, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
+
+                        <TextBlock  FontFamily="Arial" FontSize="20"
+                                    Text="i+"
+                                    HorizontalAlignment="Left" Margin="0,10"/>
+
+                        <TextBox    Margin="3,10" Width="60"
+                                    Text="{Binding CC_k_weight, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
+
+                        <TextBlock  FontFamily="Arial" FontSize="20"
+                                    Text="k+"
+                                    HorizontalAlignment="Left" Margin="0,10"/>
+
+                        <TextBox    Margin="3,10" Width="60"
+                                    Text="{Binding CC_free_weight, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
                     </StackPanel>
                 </Border>
                 

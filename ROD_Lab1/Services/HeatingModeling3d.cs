@@ -11,35 +11,35 @@ namespace ROD_Lab1.Services
         #region Границы
         // Границы задаются линейной функцией от двух аргументов - двух координат.
         // При желании можно занулить веса для координат и получится граница заданная константой
-        public double A_i_weight = 0;   // Граница А, вес для координаты i
-        public double A_j_weight = 0;   // Граница А, вес для координаты j
-        public double A_free_weight = 0;// Граница А, свободный член
+        public double A_i_weight = 1;   // Граница А, вес для координаты i
+        public double A_j_weight = 2;   // Граница А, вес для координаты j
+        public double A_free_weight = 3;// Граница А, свободный член
         // AA - границы в тех же координатах, что и А, только на другой стороне куба
-        public double AA_i_weight = 0;  
-        public double AA_j_weight = 0;
-        public double AA_free_weight = 0;
+        public double AA_i_weight = 4;  
+        public double AA_j_weight = 5;
+        public double AA_free_weight = 6;
 
-        public double B_j_weight = 0;
-        public double B_k_weight = 0;
-        public double B_free_weight = 0;
+        public double B_k_weight = 7;
+        public double B_j_weight = 8;
+        public double B_free_weight = 9;
 
-        public double BB_j_weight = 0;
-        public double BB_k_weight = 0;
-        public double BB_free_weight = 0;
+        public double BB_k_weight = 10;
+        public double BB_j_weight = 11;
+        public double BB_free_weight = 12;
 
-        public double C_i_weight = 0;
-        public double C_k_weight = 0;
-        public double C_free_weight = 0;
+        public double C_i_weight = 13;
+        public double C_k_weight = 14;
+        public double C_free_weight = 15;
 
-        public double CC_i_weight = 0;
-        public double CC_k_weight = 0;
-        public double CC_free_weight = 0;
+        public double CC_i_weight = 16;
+        public double CC_k_weight = 17;
+        public double CC_free_weight = 18;
         #endregion
 
         // Размеры параллелепипеда в см
-        public double iActualSize = 100;
-        public double jActualSize = 100;
-        public double kActualSize = 100;
+        public double iActualSize = 10;
+        public double jActualSize = 10;
+        public double kActualSize = 10;
 
         // Шаги и коэффициент
         public double h = 0.01;
