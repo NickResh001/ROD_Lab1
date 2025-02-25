@@ -15,9 +15,19 @@
 
         <Grid Grid.Column="0" Margin="5,0" Background="White" >
             <StackPanel Margin="10" Orientation="Vertical">
-                <TextBlock FontFamily="Arial" FontSize="20"
-                           Text="Определение границ"
-                           HorizontalAlignment="Center" Margin="0,10"/>
+
+                <Grid HorizontalAlignment="Stretch">
+                    <TextBlock 
+                        FontFamily="Arial" FontSize="20"
+                        Text="Определение границ"
+                        HorizontalAlignment="Center" Margin="0,10"/>
+                    <Button
+                        Margin="10,0" HorizontalAlignment="Right"
+                        Content="Обн." FontSize="18"
+                        Command="{Binding UpdateSettingsCommand}"
+                        />
+                </Grid>
+                
                 <Border BorderBrush="DarkCyan" BorderThickness="1" Padding="5,0" Margin="0,5">
                     <StackPanel Orientation="Horizontal">
                         <TextBlock FontFamily="Arial" FontSize="20"
@@ -259,35 +269,39 @@
                                        Text="a"
                                        HorizontalAlignment="Left" Margin="0,10"/>
                             <TextBox Grid.Row="0" Grid.Column="1" 
-                                     Margin="0,10" />
+                                     Margin="0,10" 
+                                     Text="{Binding A, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
 
                             <TextBlock Grid.Row="1" Grid.Column="0" 
                                        FontFamily="Arial" FontSize="20"
                                        Text="tau"
                                        HorizontalAlignment="Left" Margin="0,10"/>
                             <TextBox Grid.Row="1" Grid.Column="1" 
-                                     Margin="0,10" />
+                                     Margin="0,10"
+                                     Text="{Binding Tau, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
 
                             <TextBlock Grid.Row="2" Grid.Column="0" 
                                        FontFamily="Arial" FontSize="20"
                                        Text="h"
                                        HorizontalAlignment="Left" Margin="0,10"/>
                             <TextBox Grid.Row="2" Grid.Column="1" 
-                                     Margin="0,10" />
+                                     Margin="0,10"
+                                     Text="{Binding H, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
 
                             <TextBlock Grid.Row="3" Grid.Column="0" 
                                        FontFamily="Arial" FontSize="20"
-                                       Text="tMax"
+                                       Text="Tmax"
                                        HorizontalAlignment="Left" Margin="0,10"/>
                             <TextBox Grid.Row="3" Grid.Column="1" 
-                                     Margin="0,10" />
+                                     Margin="0,10" 
+                                     Text="{Binding Tmax, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
                         </Grid>
                         <StackPanel Grid.Row="1" Orientation="Horizontal">
                             <TextBlock  FontFamily="Arial" FontSize="20"
                                         Text="(tau * a * a) / (h * h) &lt; 0.125"
                                         HorizontalAlignment="Center" Margin="0,10"/>
                             <TextBlock  FontFamily="Arial" FontSize="20"
-                                        Text="(true)"
+                                        Text="{Binding IsStable, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
                                         HorizontalAlignment="Center" Margin="10,10"/>
                         </StackPanel>
                         

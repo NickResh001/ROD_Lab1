@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace ROD_Lab1.ViewModels
 {
-    public class MainViewModel
+    public class MainViewModel : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
         protected void OnPropertyChanged(string propertyName)
@@ -289,6 +289,12 @@ namespace ROD_Lab1.ViewModels
         private string _jActualSize;
         private string _kActualSize;
 
+        private string _tau;
+        private string _h;
+        private string _a;
+        private string _tmax;
+        private bool _isStable;
+
         public string iActualSize
         {
             get { return _iActualSize; }
@@ -329,11 +335,77 @@ namespace ROD_Lab1.ViewModels
             }
         }
 
+        public string Tau
+        {
+            get { return _tau; }
+            set
+            {
+                double temp;
+                if (double.TryParse(value, out temp) || double.TryParse(value + "0", out temp))
+                {
+                    _tau = value;
+                    OnPropertyChanged(nameof(Tau));
+                }
+            }
+        }
+        public string H
+        {
+            get { return _h; }
+            set
+            {
+                double temp;
+                if (double.TryParse(value, out temp) || double.TryParse(value + "0", out temp))
+                {
+                    _h = value;
+                    OnPropertyChanged(nameof(H));
+                }
+            }
+        }
+        public string A
+        {
+            get { return _a; }
+            set
+            {
+                double temp;
+                if (double.TryParse(value, out temp) || double.TryParse(value + "0", out temp))
+                {
+                    _a = value;
+                    OnPropertyChanged(nameof(A));
+                }
+            }
+        }
+        public string Tmax
+        {
+            get { return _tmax; }
+            set
+            {
+                double temp;
+                if (double.TryParse(value, out temp) || double.TryParse(value + "0", out temp))
+                {
+                    _tmax = value;
+                    OnPropertyChanged(nameof(Tmax));
+                }
+            }
+        }
+        public bool IsStable
+        {
+            get { return _isStable; }
+            set
+            {
+                _isStable = value;
+                OnPropertyChanged(nameof(IsStable));
+            }
+        }
+
+        public RelayCommand UpdateSettingsCommand { get; set; }
+
         public MainViewModel()
         {
-            ImportSettings();
+            SettingsToProps();
+
+            UpdateSettingsCommand = new RelayCommand(UpdateSettings);
         }
-        private void ImportSettings()
+        private void SettingsToProps()
         {
             A_i_weight = $"{hms.A_i_weight}";
             A_j_weight = $"{hms.A_j_weight}";
@@ -360,8 +432,13 @@ namespace ROD_Lab1.ViewModels
             jActualSize = $"{hms.jActualSize}";
             kActualSize = $"{hms.kActualSize}";
 
+            Tau = $"{hms.tau}";
+            H = $"{hms.h}";
+            A = $"{hms.a}";
+            Tmax = $"{hms.maxTime}";
+            IsStable = hms.isStable;
         }
-        private void ExportSettings()
+        private void PropsToSettings()
         {
             hms.A_i_weight = FromStringToDouble(A_i_weight);
             hms.A_j_weight = FromStringToDouble(A_j_weight);
@@ -384,13 +461,16 @@ namespace ROD_Lab1.ViewModels
             hms.CC_k_weight = FromStringToDouble(CC_k_weight);
             hms.CC_free_weight = FromStringToDouble(CC_free_weight);
 
-
-
             hms.iActualSize = FromStringToDouble(iActualSize);
             hms.jActualSize = FromStringToDouble(jActualSize);
             hms.kActualSize = FromStringToDouble(kActualSize);
 
-            ImportSettings();
+            hms.tau = FromStringToDouble(Tau);
+            hms.h = FromStringToDouble(H);
+            hms.a = FromStringToDouble(A);
+            hms.maxTime = FromStringToDouble(Tmax);
+
+            SettingsToProps();
         }
         private double FromStringToDouble(string str)
         {
@@ -404,5 +484,13 @@ namespace ROD_Lab1.ViewModels
             }
             return result;
         }
+
+
+        public void UpdateSettings(object parameter)
+        {
+            PropsToSettings();
+        }
+
+
     }
 }
