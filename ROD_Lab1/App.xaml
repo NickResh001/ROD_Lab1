@@ -2,8 +2,12 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:ROD_Lab1"
-             StartupUri="MainWindow.xaml">
+             StartupUri="MainWindow.xaml"
+             xmlns:vms="clr-namespace:ROD_Lab1.ViewModels"
+             xmlns:main="clr-namespace:ROD_Lab1">
     <Application.Resources>
-         
+        <DataTemplate DataType="{x:Type TypeName=vms:MainViewModel}">
+            <main:MainWindow/>
+        </DataTemplate>
     </Application.Resources>
 </Application>

@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using ROD_Lab1.ViewModels;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -16,8 +17,10 @@ namespace ROD_Lab1;
 /// </summary>
 public partial class MainWindow : Window
 {
+    public string testString = "dadada";
     public MainWindow()
     {
         InitializeComponent();
+        DataContext = new MainViewModel();
     }
 }

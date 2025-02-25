@@ -53,8 +53,8 @@ namespace ROD_Lab1.Services
         public bool isStable => (tau * a * a) / (h * h) < 0.125;
 
         // Массивы температур
-        public double[,,] u;
-        public double[,,] uNew;
+        public double[][][] u;
+        public double[][][] uNew;
 
         // размеры массивов
         public int iSize => (int)(iActualSize / h);
@@ -68,14 +68,24 @@ namespace ROD_Lab1.Services
 
         private void InitializeU()
         {
-            u = new double[iSize,jSize,kSize];
-            for (int i = 0; i < iSize; i++)
-                for (int j = 0; j < jSize; j++)
-                    for (int k = 0; k < kSize; k++)
+            double[][][] uTemp = new double[iSize][][];
+            int iSizeVar = iSize;
+            int jSizeVar = jSize;
+            int kSizeVar = kSize;
+
+            Parallel.For(0, iSizeVar, i =>
+            {
+                uTemp[i] = new double[jSizeVar][];
+                for (int j = 0; j < jSizeVar; j++)
+                {
+                    uTemp[i][j] = new double[kSizeVar];
+                    for (int k = 0; k < kSizeVar; k++)
                     {
-                        u[i, j, k] = 0;
+                        uTemp[i][j][k] = 0;
                     }
-            uNew = u;
+                }
+            });
+            uNew = u = uTemp;
         }
     }
     public class HeatingModeling3d
