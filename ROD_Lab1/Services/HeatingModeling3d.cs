@@ -44,7 +44,7 @@ namespace ROD_Lab1.Services
         public double kActualSize = 1;
 
         // Шаги и коэффициент
-        public double h = 0.01;
+        public double h = 0.05;
         public double tau = 0.01;
         public double a = 0.03;
 
@@ -143,7 +143,7 @@ namespace ROD_Lab1.Services
             return st.u[i][j][k] + (st.tau * st.a * st.a) / (st.h * st.h) *
                         (st.u[i - 1][j][k] + st.u[i + 1][j][k] +
                         st.u[i][j - 1][k] + st.u[i][j + 1][k] +
-                        st.u[i][j][k - 1] + st.u[i][j][k + 1] +
+                        st.u[i][j][k - 1] + st.u[i][j][k + 1] -
                         6 * st.u[i][j][k]);
         }
 
