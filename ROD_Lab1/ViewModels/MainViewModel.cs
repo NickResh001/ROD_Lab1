@@ -6,6 +6,10 @@ using System.Linq;
 using System.Text;
 using System.Text.Encodings.Web;
 using System.Threading.Tasks;
+using System.Windows.Media.Imaging;
+using System.Windows.Media;
+using System.Windows;
+using System.Collections.ObjectModel;
 
 namespace ROD_Lab1.ViewModels
 {
@@ -294,7 +298,6 @@ namespace ROD_Lab1.ViewModels
         private string _a;
         private string _tmax;
         private bool _isStable;
-
         public string iActualSize
         {
             get { return _iActualSize; }
@@ -397,13 +400,89 @@ namespace ROD_Lab1.ViewModels
             }
         }
 
+        private WriteableBitmap _currentImage;
+        private WriteableBitmap[] _images;
+        private int _sliderValue;
+        private int _sliderCount;
+        private int _sliderMax;
+        public WriteableBitmap CurrentImage
+        {
+            get { return _currentImage; }
+            set
+            {
+                _currentImage = value;
+                OnPropertyChanged(nameof(CurrentImage));
+            }
+        }
+
+        public int SliderValue
+        {
+            get => _sliderValue;
+            set
+            {
+                if (_sliderValue != value)
+                {
+                    _sliderValue = value;
+                    OnPropertyChanged(nameof(SliderValue));
+                    UpdateBitmap();
+                }
+            }
+        }
+        public int SliderCount
+        {
+            get => _sliderCount;
+            set
+            {
+                if (_sliderCount != value)
+                {
+                    _sliderCount = value;
+                    _sliderMax = value - 1;
+                    OnPropertyChanged(nameof(SliderCount));
+                    OnPropertyChanged(nameof(SliderMax));
+                }
+            }
+        }
+        public int SliderMax
+        {
+            get => _sliderMax;
+            set
+            {
+                if (_sliderMax != value)
+                {
+                    _sliderMax = value;
+                    OnPropertyChanged(nameof(SliderMax));
+                }
+            }
+        }
         public RelayCommand UpdateSettingsCommand { get; set; }
 
         public MainViewModel()
         {
-            SettingsToProps();
-
             UpdateSettingsCommand = new RelayCommand(UpdateSettings);
+
+            SliderCount = 10;
+            SettingsToProps();
+            HeatMapService map = new(0, 60, SliderCount);
+
+            int size1 = 30;
+            int size2 = 20;
+            int size3 = 10;
+            double[][][] test = new double[size1][][];
+            for (int i = 0; i < size1; i++)
+            {
+                test[i] = new double[size2][];
+                for (int j = 0; j < size2; j++)
+                {
+                    test[i][j] = new double[size3];
+                    for (int k = 0; k < size3; k++)
+                    {
+                        test[i][j][k] = i + j + k;
+                    }
+                }
+            }
+
+            _images = map.CreateHeatMap(test, size1, size2, size3);
+            UpdateBitmap();
         }
         private void SettingsToProps()
         {
@@ -484,7 +563,10 @@ namespace ROD_Lab1.ViewModels
             }
             return result;
         }
-
+        private void UpdateBitmap()
+        {
+            CurrentImage = _images[SliderValue];
+        }
 
         public void UpdateSettings(object parameter)
         {

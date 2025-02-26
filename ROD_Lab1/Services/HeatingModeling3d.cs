@@ -37,9 +37,9 @@ namespace ROD_Lab1.Services
         #endregion
 
         // Размеры параллелепипеда в см
-        public double iActualSize = 10;
-        public double jActualSize = 10;
-        public double kActualSize = 10;
+        public double iActualSize = 1;
+        public double jActualSize = 1;
+        public double kActualSize = 1;
 
         // Шаги и коэффициент
         public double h = 0.01;

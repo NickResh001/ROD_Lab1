@@ -316,16 +316,22 @@
                 <RowDefinition Height="60"/>
             </Grid.RowDefinitions>
 
+            <Grid Grid.Row="0">
+                <Image Source="{Binding CurrentImage, UpdateSourceTrigger=PropertyChanged}"/>
+            </Grid>
+            
             <Grid Grid.Row="1">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="200"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
 
-                <Button Grid.Column="0" Margin="5"
-                        />
+                <Button Grid.Column="0" Margin="5"/>
 
-                <Slider Grid.Column="1" VerticalAlignment="Center" Margin="10"/>
+                <Slider Grid.Column="1" VerticalAlignment="Center" Margin="10"
+                        Minimum="0" Maximum="{Binding SliderMax, UpdateSourceTrigger=PropertyChanged}"
+                        TickFrequency="1" IsSnapToTickEnabled="True"
+                        Value="{Binding SliderValue, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
             </Grid>
         </Grid>
     </Grid>
