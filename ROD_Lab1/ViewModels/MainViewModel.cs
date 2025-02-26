@@ -22,6 +22,7 @@ namespace ROD_Lab1.ViewModels
         }
         
         private HeatingModelSettings hms = new();
+        private HeatingModeling3d solver;
 
         #region Границы
         private string _A_i_weight;
@@ -405,6 +406,8 @@ namespace ROD_Lab1.ViewModels
         private int _sliderValue;
         private int _sliderCount;
         private int _sliderMax;
+        private bool _isParallel;
+        private double _execTime;
         public WriteableBitmap CurrentImage
         {
             get { return _currentImage; }
@@ -414,7 +417,7 @@ namespace ROD_Lab1.ViewModels
                 OnPropertyChanged(nameof(CurrentImage));
             }
         }
-
+        
         public int SliderValue
         {
             get => _sliderValue;
@@ -454,35 +457,37 @@ namespace ROD_Lab1.ViewModels
                 }
             }
         }
+        public bool IsParallel
+        {
+            get => _isParallel;
+            set
+            {
+                if (_isParallel != value)
+                {
+                    _isParallel = value;
+                    OnPropertyChanged(nameof(IsParallel));
+                }
+            }
+        }
+        public double ExecTime
+        {
+            get { return _execTime; }
+            set
+            {
+                _execTime = value;
+                OnPropertyChanged(nameof(ExecTime));
+            }
+        }
         public RelayCommand UpdateSettingsCommand { get; set; }
+        public RelayCommand SolveCommand { get; set; }
 
         public MainViewModel()
         {
             UpdateSettingsCommand = new RelayCommand(UpdateSettings);
-
+            SolveCommand = new RelayCommand(Solve);
             SliderCount = 10;
+            ExecTime = 0;
             SettingsToProps();
-            HeatMapService map = new(0, 60, SliderCount);
-
-            int size1 = 30;
-            int size2 = 20;
-            int size3 = 10;
-            double[][][] test = new double[size1][][];
-            for (int i = 0; i < size1; i++)
-            {
-                test[i] = new double[size2][];
-                for (int j = 0; j < size2; j++)
-                {
-                    test[i][j] = new double[size3];
-                    for (int k = 0; k < size3; k++)
-                    {
-                        test[i][j][k] = i + j + k;
-                    }
-                }
-            }
-
-            _images = map.CreateHeatMap(test, size1, size2, size3);
-            UpdateBitmap();
         }
         private void SettingsToProps()
         {
@@ -567,12 +572,39 @@ namespace ROD_Lab1.ViewModels
         {
             CurrentImage = _images[SliderValue];
         }
+        private double GetMax()
+        {
+            List<double> maxs = [];
+            maxs.Add(hms.u[0][0][0]);
+            maxs.Add(hms.u[0][0][hms.kSize - 1]);
+            maxs.Add(hms.u[0][hms.jSize - 1][0]);
+            maxs.Add(hms.u[0][hms.jSize - 1][hms.kSize - 1]);
+            maxs.Add(hms.u[hms.iSize - 1][0][0]);
+            maxs.Add(hms.u[hms.iSize - 1][0][hms.kSize - 1]);
+            maxs.Add(hms.u[hms.iSize - 1][hms.jSize - 1][0]);
+            maxs.Add(hms.u[hms.iSize - 1][hms.jSize - 1][hms.kSize - 1]);
+            return maxs.Max();
+        }
 
         public void UpdateSettings(object parameter)
         {
             PropsToSettings();
         }
+        public void Solve(object parameter)
+        {
+            solver = new();
+            if (IsParallel)
+                solver.SolveParallel(hms);
+            else
+                solver.Solve(hms);
+            hms = solver.st;
+            ExecTime = hms.execTime;
 
+            var tmp = solver.GetMinAndMax();
+            HeatMapService map = new(tmp.min, tmp.max, SliderCount);
+            _images = map.CreateHeatMap(hms.u, hms.iSize, hms.jSize, hms.kSize);
+            UpdateBitmap();
+        }
 
     }
 }

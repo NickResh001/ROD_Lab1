@@ -318,6 +318,8 @@
 
             <Grid Grid.Row="0">
                 <Image Source="{Binding CurrentImage, UpdateSourceTrigger=PropertyChanged}"/>
+                <CheckBox VerticalAlignment="Top" HorizontalAlignment="Left"
+                          IsChecked="{Binding IsParallel, UpdateSourceTrigger=PropertyChanged}"/>
             </Grid>
             
             <Grid Grid.Row="1">
@@ -326,7 +328,9 @@
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
 
-                <Button Grid.Column="0" Margin="5"/>
+                <Button Grid.Column="0" Margin="5"
+                        Content="{Binding ExecTime, UpdateSourceTrigger=PropertyChanged}"
+                        Command="{Binding SolveCommand}"/>
 
                 <Slider Grid.Column="1" VerticalAlignment="Center" Margin="10"
                         Minimum="0" Maximum="{Binding SliderMax, UpdateSourceTrigger=PropertyChanged}"

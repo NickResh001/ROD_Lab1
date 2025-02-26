@@ -49,7 +49,7 @@ namespace ROD_Lab1.Services
         public WriteableBitmap[] CreateHeatMap(double[][][] u, int iSize, int jSize, int kSize)
         {
             WriteableBitmap[] result = new WriteableBitmap[sliderCount];
-            int offset = (int)(iSize / sliderCount);
+            int offset = Math.Max((int)(iSize / sliderCount),2);
             for (int i = 0; i < iSize; i++)
             {
                 if ((i + 1) % offset != 0) 
