@@ -17,7 +17,7 @@ namespace ROD_Lab1.Services
         public double A_j_weight = 0;   // Граница А, вес для координаты j
         public double A_free_weight = 100;// Граница А, свободный член
         // AA - границы в тех же координатах, что и А, только на другой стороне куба
-        public double AA_i_weight = 0;  
+        public double AA_i_weight = 0;
         public double AA_j_weight = 0;
         public double AA_free_weight = 100;
 
